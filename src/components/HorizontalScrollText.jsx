@@ -26,21 +26,7 @@ export default function HorizontalScrollText() {
         xPercent: -50,
         ease: 'none',
         duration: 1, // Represents 100% of the timeline duration
-      }, 0);
-
-      // 2. Scale up (first half of timeline)
-      tl.fromTo(textRef.current,
-        { scale: 0.5 },
-        { scale: 1.5, ease: 'power1.inOut', duration: 0.5 },
-        0
-      );
-
-      // 3. Scale down (second half of timeline)
-      tl.to(textRef.current, {
-        scale: 0.5,
-        ease: 'power1.inOut',
-        duration: 0.5
-      }, 0.5);
+      });
 
     }, sectionRef);
 
@@ -51,6 +37,10 @@ export default function HorizontalScrollText() {
     <section
       ref={sectionRef}
       className="relative w-full h-screen overflow-hidden bg-bg flex items-center justify-center"
+      style={{
+        maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
+      }}
     >
       <div 
         ref={textRef} 
