@@ -7,10 +7,15 @@ gsap.registerPlugin(ScrollTrigger);
 export default function HorizontalScrollText() {
   const sectionRef = useRef(null);
   const textRef = useRef(null);
+  const charsRef = useRef([]);
+
+  const text = "I'M 26 — AND I'VE BEEN DESIGNING";
+  // Split into characters for a much smoother, fluid "fisheye" center-scaling effect
+  const chars = text.split("");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Create a single master timeline for the scroll animation
+      // 1. Horizontal scroll timeline
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -21,12 +26,53 @@ export default function HorizontalScrollText() {
         },
       });
 
-      // 1. Horizontal translation across the entire scroll duration
+      // Horizontal translation
       tl.to(textRef.current, {
         xPercent: -50,
         ease: 'none',
-        duration: 1, // Represents 100% of the timeline duration
+        duration: 1,
       });
+
+      // 2. Dynamic center-weighted scaling (Fisheye effect)
+      const updateScales = () => {
+        if (!charsRef.current || charsRef.current.length === 0) return;
+        
+        const windowCenter = window.innerWidth / 2;
+        // The distance at which the character reaches minimum scale
+        const maxDist = window.innerWidth / 1.5; 
+
+        charsRef.current.forEach((char) => {
+          if (!char) return;
+          const rect = char.getBoundingClientRect();
+          const charCenter = rect.left + rect.width / 2;
+          
+          // Absolute distance from the exact center of the screen
+          const dist = Math.abs(windowCenter - charCenter);
+          
+          // Calculate scale: largest at center (dist = 0), smaller at edges
+          const minScale = 0.6;
+          const maxScale = 1.5;
+          
+          // Linear mapping mapped through a subtle easing curve conceptually (just using math)
+          let scale = maxScale - (dist / maxDist) * (maxScale - minScale);
+          scale = Math.max(minScale, Math.min(maxScale, scale));
+          
+          // Apply scale and slightly adjust opacity based on distance for depth
+          const opacity = Math.max(0.3, 1 - (dist / maxDist) * 0.7);
+
+          gsap.set(char, { 
+            scale: scale,
+            opacity: opacity
+          });
+        });
+      };
+
+      // Hook into GSAP's ticker to continuously update character scales while animating
+      gsap.ticker.add(updateScales);
+
+      return () => {
+        gsap.ticker.remove(updateScales);
+      };
 
     }, sectionRef);
 
@@ -48,10 +94,19 @@ export default function HorizontalScrollText() {
         style={{ willChange: 'transform' }}
       >
         <h2 
-          className="text-[15vw] md:text-[20vw] font-bold tracking-tighter leading-none select-none text-transparent"
+          className="text-[12vw] md:text-[16vw] font-bold tracking-tighter leading-none select-none text-transparent flex items-center"
           style={{ WebkitTextStroke: '2px var(--color-text-primary)' }}
         >
-          I'M 26 — AND I'VE BEEN DESIGNING
+          {chars.map((char, i) => (
+            <span
+              key={i}
+              ref={(el) => (charsRef.current[i] = el)}
+              className="inline-block origin-center will-change-transform"
+              style={{ marginRight: char === " " ? "3vw" : "2px" }}
+            >
+              {char}
+            </span>
+          ))}
         </h2>
       </div>
     </section>
