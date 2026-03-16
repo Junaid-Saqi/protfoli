@@ -10,51 +10,37 @@ export default function HorizontalScrollText() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Create a timeline for the scroll animation
+      // Create a single master timeline for the scroll animation
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top bottom', // Start when the top of the section hits the bottom of the viewport
-          end: 'bottom top',   // End when the bottom of the section hits the top of the viewport
-          scrub: 1,            // Smooth scrubbing
+          start: 'center center', // Pin when the section reaches the center of the viewport
+          end: '+=150%',          // Keep pinned for 150% of the viewport height (creates longer scroll distance)
+          pin: true,              // Freeze the section in place
+          scrub: 1,               // Smooth scrubbing
         },
       });
 
-      // Horizontal translation
+      // 1. Horizontal translation across the entire scroll duration
       tl.to(textRef.current, {
-        xPercent: -50, // Move the text to the left
+        xPercent: -50,
         ease: 'none',
+        duration: 1, // Represents 100% of the timeline duration
       }, 0);
 
-      // Scale up and then down based on proximity to center
-      // We use a scrollTrigger on the specific text element for scale to peak at center
-      gsap.fromTo(textRef.current,
-        { scale: 0.8 },
-        {
-          scale: 1.2,
-          ease: 'power1.inOut',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top center',
-            end: 'center center',
-            scrub: true,
-          }
-        }
+      // 2. Scale up (first half of timeline)
+      tl.fromTo(textRef.current,
+        { scale: 0.5 },
+        { scale: 1.5, ease: 'power1.inOut', duration: 0.5 },
+        0
       );
 
-      gsap.fromTo(textRef.current,
-        { scale: 1.2 },
-        {
-          scale: 0.8,
-          ease: 'power1.inOut',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'center center',
-            end: 'bottom center',
-            scrub: true,
-          }
-        }
-      );
+      // 3. Scale down (second half of timeline)
+      tl.to(textRef.current, {
+        scale: 0.5,
+        ease: 'power1.inOut',
+        duration: 0.5
+      }, 0.5);
 
     }, sectionRef);
 
@@ -64,14 +50,17 @@ export default function HorizontalScrollText() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-[50vh] flex items-center overflow-hidden bg-bg"
+      className="relative w-full h-screen overflow-hidden bg-bg flex items-center justify-center"
     >
       <div 
         ref={textRef} 
-        className="whitespace-nowrap flex items-center origin-center"
+        className="whitespace-nowrap flex items-center justify-center origin-center"
         style={{ willChange: 'transform' }}
       >
-        <h2 className="text-[12vw] md:text-[15vw] font-light tracking-tighter text-text-primary leading-none select-none">
+        <h2 
+          className="text-[15vw] md:text-[20vw] font-bold tracking-tighter leading-none select-none text-transparent"
+          style={{ WebkitTextStroke: '2px var(--color-text-primary)' }}
+        >
           I'M 26 — AND I'VE BEEN DESIGNING
         </h2>
       </div>

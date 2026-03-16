@@ -1,5 +1,8 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Preloader({ mainContentRef }) {
   const containerRef = useRef(null);
@@ -22,12 +25,16 @@ export default function Preloader({ mainContentRef }) {
         if (containerRef.current) {
           containerRef.current.style.display = 'none';
         }
-        // Cleanup perspective if needed, but keeping it is fine
+        // Cleanup perspective and all transforms to prevent position: fixed clipping bugs
         if (mainContentRef.current) {
-          gsap.set(mainContentRef.current, { clearProps: 'transformPerspective' });
+          gsap.set(mainContentRef.current, { clearProps: 'all' });
         }
         // Restore scrollbar which might be blocked by preloader fixed position
         document.body.style.overflow = '';
+        
+        // Force GSAP to recalculate all trigger positions now that 
+        // the scale transform is removed and layout has settled.
+        ScrollTrigger.refresh();
       }
     });
 

@@ -11,7 +11,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Removed scroll-behavior: smooth to avoid conflicts with GSAP pinning */
 }
 
 body {
