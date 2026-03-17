@@ -98,8 +98,8 @@ export default function HorizontalScrollText() {
         style={{ willChange: 'transform' }}
       >
         <h2 
-          className="text-[8vw] md:text-[10vw] font-bold tracking-tighter leading-none select-none text-transparent flex items-center"
-          style={{ WebkitTextStroke: '2px var(--color-text-primary)' }}
+          className="text-[5vw] md:text-[6vw] font-bold tracking-tighter leading-none select-none text-transparent flex items-center"
+          style={{ WebkitTextStroke: '1.5px var(--color-text-primary)' }}
         >
           {chars.map((char, i) => (
             <span
