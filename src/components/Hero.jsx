@@ -108,14 +108,14 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94], delay: 1.5 }}
-        className="absolute bottom-0 w-[95vw] sm:w-[85vw] md:w-[60vw] h-[90vh] bg-[#0a0a0a] overflow-hidden rounded-t-sm"
+        className="absolute bottom-0 w-[95vw] sm:w-[85vw] md:w-[75vw] h-[90vh] bg-[#0a0a0a] overflow-hidden rounded-t-sm"
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-accent/20 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-accent/25 to-transparent z-10 pointer-events-none" />
         <img
           ref={imageRef}
           src={profileImg}
           alt="Portrait"
-          className="w-full h-full object-cover object-top grayscale opacity-80 mix-blend-luminosity"
+          className="w-full h-full object-cover object-top grayscale opacity-90 mix-blend-luminosity"
         />
       </motion.div>
 
