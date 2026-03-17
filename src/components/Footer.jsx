@@ -14,54 +14,43 @@ export default function Footer() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="py-16 px-6 border-t border-border"
+      className="py-20 px-6 border-t border-border mt-20"
     >
-      <div className="max-w-5xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Left — Name / Brand */}
-          <div className="text-center md:text-left">
-            <h3 className="text-lg font-semibold tracking-tight">Portfolio</h3>
-            <p className="mt-1 text-sm text-text-secondary">
-              Visual Designer & Creative Developer
-            </p>
-          </div>
-
-          {/* Center — Social Links */}
-          <div className="flex items-center gap-4">
-            {socialLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.url}
-                data-hover
-                aria-label={link.name}
-                className="w-10 h-10 flex items-center justify-center border border-border rounded-full
-                           text-sm font-semibold text-text-secondary
-                           transition-all duration-300
-                           hover:bg-accent hover:text-bg hover:border-accent hover:scale-110"
-              >
-                {link.icon}
-              </a>
-            ))}
-          </div>
-
-          {/* Right — Email */}
-          <div className="text-center md:text-right">
-            <a
-              href="mailto:hello@portfolio.com"
-              data-hover
-              className="text-sm text-text-secondary hover:text-accent transition-colors duration-300 underline underline-offset-4 decoration-border hover:decoration-accent"
-            >
-              hello@portfolio.com
-            </a>
-          </div>
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 md:gap-0">
+        <div>
+          <h2 className="text-4xl md:text-5xl font-light tracking-tighter mb-6">
+            Let's build <br /> something <span className="font-serif italic italic text-white/50">great</span> together.
+          </h2>
+          <a
+            href="mailto:hello@junaidmirza.com"
+            className="text-lg md:text-xl font-medium tracking-wide hover:opacity-50 transition-opacity underline underline-offset-8"
+          >
+            hello@junaidmirza.com
+          </a>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-12 pt-6 border-t border-border/50 text-center">
-          <p className="text-xs text-text-secondary tracking-wider">
-            © {new Date().getFullYear()} Portfolio. All rights reserved.
-          </p>
+        <div className="grid grid-cols-2 gap-16">
+          <div className="flex flex-col gap-4">
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/30">Navigation</span>
+            <a href="#about" className="text-sm hover:opacity-100 transition-opacity">About</a>
+            <a href="#work" className="text-sm hover:opacity-100 transition-opacity">Work</a>
+            <a href="#contact" className="text-sm hover:opacity-100 transition-opacity">Contact</a>
+          </div>
+          <div className="flex flex-col gap-4">
+            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/30">Connect</span>
+            <a href="#" className="text-sm hover:opacity-100 transition-opacity">Instagram</a>
+            <a href="#" className="text-sm hover:opacity-100 transition-opacity">LinkedIn</a>
+            <a href="#" className="text-sm hover:opacity-100 transition-opacity">Twitter</a>
+          </div>
         </div>
+      </div>
+
+      <div className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0 text-[10px] font-bold tracking-[0.2em] uppercase text-white/30">
+        <p>© 2024 Junaid Mirza — All rights reserved.</p>
+        <p className="flex gap-8">
+          <span>Visual Designer</span>
+          <span>Creative Developer</span>
+        </p>
       </div>
     </motion.footer>
   );

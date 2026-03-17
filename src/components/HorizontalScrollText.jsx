@@ -9,7 +9,7 @@ export default function HorizontalScrollText() {
   const textRef = useRef(null);
   const charsRef = useRef([]);
 
-  const text = "I'M 26 — AND I'VE BEEN DESIGNING";
+  const text = "I am Junaid Mirza—a joyful dreamer and developer who writes code the way a poet writes verses, turning imagination into living digital worlds.";
   // Split into characters for a much smoother, fluid "fisheye" center-scaling effect
   const chars = text.split("");
 
@@ -26,20 +26,24 @@ export default function HorizontalScrollText() {
         },
       });
 
-      // Horizontal translation
-      tl.to(textRef.current, {
-        xPercent: -50,
-        ease: 'none',
-        duration: 1,
-      });
+      // Horizontal translation: Start centered (first character) and scroll until end is centered (last character)
+      tl.fromTo(textRef.current, 
+        { xPercent: 50 }, 
+        {
+          xPercent: -50, 
+          ease: 'none',
+          duration: 1,
+        }
+      );
 
       // 2. Dynamic center-weighted scaling (Fisheye effect)
+
       const updateScales = () => {
         if (!charsRef.current || charsRef.current.length === 0) return;
         
         const windowCenter = window.innerWidth / 2;
         // The distance at which the character reaches minimum scale
-        const maxDist = window.innerWidth / 1.5; 
+        const maxDist = window.innerWidth / 2; 
 
         charsRef.current.forEach((char) => {
           if (!char) return;
@@ -90,11 +94,11 @@ export default function HorizontalScrollText() {
     >
       <div 
         ref={textRef} 
-        className="whitespace-nowrap flex items-center justify-center origin-center"
+        className="whitespace-nowrap flex items-center justify-start origin-left"
         style={{ willChange: 'transform' }}
       >
         <h2 
-          className="text-[12vw] md:text-[16vw] font-bold tracking-tighter leading-none select-none text-transparent flex items-center"
+          className="text-[8vw] md:text-[10vw] font-bold tracking-tighter leading-none select-none text-transparent flex items-center"
           style={{ WebkitTextStroke: '2px var(--color-text-primary)' }}
         >
           {chars.map((char, i) => (

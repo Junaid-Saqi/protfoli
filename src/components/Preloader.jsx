@@ -86,7 +86,7 @@ export default function Preloader({ mainContentRef }) {
       {/* Step 1: Preloader Typography */}
       <div className="absolute inset-0 flex items-center justify-center">
         <h1 ref={textRef} className="text-white text-lg md:text-2xl font-light tracking-[0.3em] uppercase">
-          Harry Visuals
+          Junaid Mirza
         </h1>
       </div>
     </div>

@@ -26,8 +26,8 @@ const projects = [
 
 export default function SelectedWork() {
   return (
-    <section id="work" className="py-24 md:py-32 px-6 bg-white">
-      <div className="max-w-5xl mx-auto">
+    <section id="work" className="py-24 md:py-32 px-6">
+      <div className="max-w-4xl mx-auto">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -48,50 +48,42 @@ export default function SelectedWork() {
           Selected Work
         </motion.h2>
 
-        <div className="mt-16 space-y-16 md:space-y-20">
+        <div className="mt-16 space-y-24 md:space-y-32">
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -60 : 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-              data-hover
-              className={`group flex flex-col ${
-                i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-              } gap-8 md:gap-12 items-center`}
+              className="group grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start"
             >
               {/* Thumbnail */}
-              <div className="w-full md:w-1/2 overflow-hidden rounded-lg">
-                <div className="relative overflow-hidden aspect-[4/3]">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-colors duration-500" />
-                </div>
+              <div className="md:col-span-7 overflow-hidden rounded-sm bg-card aspect-[16/10]">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
               </div>
 
               {/* Info */}
-              <div className="w-full md:w-1/2 flex flex-col justify-center">
-                <span className="text-xs font-medium tracking-[0.2em] uppercase text-text-secondary">
+              <div className="md:col-span-5 pt-2">
+                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-text-secondary">
                   {project.category}
                 </span>
-                <h3 className="mt-3 text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight">
+                <h3 className="mt-4 text-xl md:text-2xl font-semibold tracking-tight uppercase">
                   {project.title}
                 </h3>
-                <p className="mt-4 text-text-secondary text-sm sm:text-base leading-relaxed">
+                <p className="mt-4 text-text-secondary text-sm leading-relaxed">
                   {project.description}
                 </p>
-                <div className="mt-6">
-                  <span className="inline-flex items-center gap-2 text-sm font-medium group-hover:gap-3 transition-all duration-300">
-                    View Project
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </span>
+                <div className="mt-8">
+                   <div className="inline-flex items-center gap-4 text-[10px] font-bold tracking-[0.2em] uppercase cursor-pointer hover:gap-6 transition-all duration-300">
+                     Explore Project
+                     <div className="w-8 h-[1px] bg-accent" />
+                   </div>
                 </div>
               </div>
             </motion.div>

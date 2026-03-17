@@ -16,8 +16,9 @@ export default function CustomCursor() {
     const moveCursor = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      gsap.to(cursor, { x: mouseX, y: mouseY, duration: 0.1, ease: 'power2.out' });
-      gsap.to(follower, { x: mouseX, y: mouseY, duration: 0.3, ease: 'power2.out' });
+      const V_OFFSET = 8; // Offset upwards by 8 pixels
+      gsap.to(cursor, { x: mouseX, y: mouseY - V_OFFSET, duration: 0.1, ease: 'power2.out' });
+      gsap.to(follower, { x: mouseX, y: mouseY - V_OFFSET, duration: 0.3, ease: 'power2.out' });
     };
 
     const handleMouseEnter = () => {

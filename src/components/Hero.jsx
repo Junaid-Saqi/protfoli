@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import profileImg from '../assets/profile.png';
+import resumeFile from '../assets/Resume/Profile.pdf';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,7 +59,7 @@ export default function Hero() {
       
       // Giant name text slides slightly outward horizontally on scroll for parallax effect
       gsap.to(leftTextRef.current, {
-        x: '-20vw',
+        x: '-10vw',
         ease: 'none',
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -68,7 +69,7 @@ export default function Hero() {
         }
       });
       gsap.to(rightTextRef.current, {
-        x: '20vw',
+        x: '8vw',
         ease: 'none',
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -92,15 +93,13 @@ export default function Hero() {
       {/* Absolute Navbar matching layout */}
       <nav className="absolute top-0 left-0 w-full px-6 py-8 flex justify-between items-center z-50 mix-blend-difference text-white text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase pointer-events-none">
         <div className="flex gap-4 md:gap-8">
-          <span className="pointer-events-auto">Harry Visuals</span>
-          <span className="hidden md:inline-block opacity-70 cursor-pointer pointer-events-auto hover:opacity-100 transition-opacity">Honors</span>
+          <span className="pointer-events-auto">Junaid Mirza</span>
           <a href="#work" className="hidden md:inline-block opacity-70 cursor-pointer pointer-events-auto hover:opacity-100 transition-opacity">Projects</a>
-          <span className="hidden md:inline-block opacity-70 cursor-pointer pointer-events-auto hover:opacity-100 transition-opacity">Resume</span>
+          <a href={resumeFile} target="_blank" rel="noopener noreferrer" className="hidden md:inline-block opacity-70 cursor-pointer pointer-events-auto hover:opacity-100 transition-opacity">Resume</a>
           <a href="#contact" className="hidden md:inline-block opacity-70 cursor-pointer pointer-events-auto hover:opacity-100 transition-opacity">Contact</a>
         </div>
         <div className="flex gap-4 md:gap-8">
-          <span className="hidden md:inline-block opacity-70 cursor-pointer pointer-events-auto hover:opacity-100 transition-opacity">Awwwards</span>
-          <span className="opacity-70 cursor-pointer pointer-events-auto hover:opacity-100 transition-opacity">LinkedIn</span>
+          <a href="https://www.linkedin.com/in/junaid-bro/" target="_blank" rel="noopener noreferrer" className="opacity-70 cursor-pointer pointer-events-auto hover:opacity-100 transition-opacity">LinkedIn</a>
         </div>
       </nav>
 
@@ -109,8 +108,9 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, ease: [0.25, 0.46, 0.45, 0.94], delay: 1.5 }}
-        className="absolute bottom-0 w-[95vw] sm:w-[80vw] md:w-[50vw] h-[85vh] bg-[#111] overflow-hidden rounded-t-sm"
+        className="absolute bottom-0 w-[95vw] sm:w-[85vw] md:w-[60vw] h-[90vh] bg-[#0a0a0a] overflow-hidden rounded-t-sm"
       >
+        <div className="absolute inset-0 bg-gradient-to-t from-accent/20 to-transparent z-10 pointer-events-none" />
         <img
           ref={imageRef}
           src={profileImg}
@@ -120,21 +120,22 @@ export default function Hero() {
       </motion.div>
 
       {/* Large Overlapping Split Text */}
-      <div className="absolute top-1/2 left-0 w-full -translate-y-1/2 flex justify-between items-center px-2 sm:px-4 md:px-12 z-20 pointer-events-none mix-blend-difference text-white">
+      {/* Slightly inward padding from original 12 to 24 */}
+      <div className="absolute top-1/2 left-0 w-full -translate-y-1/2 flex justify-between items-center px-6 md:px-24 lg:px-32 z-30 pointer-events-none mix-blend-difference text-white">
         
         {/* Left Side Group */}
         <motion.div
           ref={leftTextRef}
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: 'easeOut', delay: 1.6 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 1.6 }}
           className="flex flex-col"
         >
-          <span className="text-[9px] md:text-xs tracking-[0.2em] font-medium uppercase mb-0 md:mb-1 opacity-80 pl-1 md:pl-2">
+          <span className="text-[8px] md:text-[10px] tracking-[0.2em] font-medium uppercase mb-0 md:mb-1 opacity-80 pl-1 md:pl-2">
             Portfolio Of
           </span>
-          <h1 className="text-[18vw] md:text-[13vw] leading-none font-light tracking-tighter">
-            HARRY
+          <h1 className="text-[12vw] md:text-[9vw] leading-none font-light tracking-tighter">
+            JUNAID
           </h1>
         </motion.div>
 
@@ -143,14 +144,14 @@ export default function Hero() {
           ref={rightTextRef}
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: 'easeOut', delay: 1.8 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 1.8 }}
           className="flex flex-col items-end text-right"
         >
-          <span className="text-[9px] md:text-xs tracking-[0.2em] font-medium uppercase mb-0 md:mb-1 opacity-80 pr-1 md:pr-2 max-w-[120px] md:max-w-none text-right">
+          <span className="text-[8px] md:text-[10px] tracking-[0.2em] font-medium uppercase mb-0 md:mb-1 opacity-80 pr-1 md:pr-2 max-w-[120px] md:max-w-none text-right">
             Visual Designer {'&'} <br className="hidden md:inline-block" />Creative Developer
           </span>
-          <h1 className="text-[18vw] md:text-[13vw] leading-none font-light tracking-tighter">
-            VISUALS
+          <h1 className="text-[12vw] md:text-[9vw] leading-none font-light tracking-tighter">
+            MIRZA
           </h1>
         </motion.div>
       </div>
@@ -162,7 +163,7 @@ export default function Hero() {
         transition={{ delay: 2.2, duration: 1 }}
         className="absolute bottom-[25vh] md:bottom-32 left-1/2 -translate-x-1/2 z-20 mix-blend-difference text-white text-[9px] md:text-[11px] font-semibold tracking-[0.2em] text-center uppercase pointer-events-none"
       >
-        <span>Scroll</span><br /><span>Down</span>
+        <span className="text-accent">Scroll</span><br /><span>Down</span>
       </motion.div>
 
       {/* Bottom Text (Left corner and Right corner) */}

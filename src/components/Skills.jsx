@@ -34,8 +34,8 @@ const cardVariants = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 md:py-32 px-6 bg-white">
-      <div className="max-w-5xl mx-auto">
+    <section id="skills" className="py-24 md:py-32 px-6">
+      <div className="max-w-4xl mx-auto">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,23 +61,21 @@ export default function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="mt-14 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+          className="mt-16 border-t border-border pt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-12"
         >
           {skills.map((skill) => (
             <motion.div
               key={skill.name}
               variants={cardVariants}
-              data-hover
-              className="group relative px-5 py-6 border border-border rounded-lg text-center
-                         transition-all duration-300
-                         hover:border-accent hover:shadow-lg hover:scale-105 hover:-translate-y-1"
+              className="flex items-center gap-6 group"
             >
-              <span className="block text-xl mb-3 text-text-secondary group-hover:text-accent transition-colors duration-300">
+              <div className="w-10 h-10 border border-border flex items-center justify-center rounded-sm text-text-secondary group-hover:border-accent group-hover:text-accent transition-all duration-300">
                 {skill.icon}
-              </span>
-              <span className="text-sm font-medium tracking-wide">{skill.name}</span>
-              {/* Glow effect on hover */}
-              <div className="absolute inset-0 rounded-lg bg-accent/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              <div>
+                <span className="text-xs font-bold tracking-[0.2em] uppercase block">{skill.name}</span>
+                <span className="text-[10px] text-text-secondary uppercase tracking-widest mt-1 block">Proficiency</span>
+              </div>
             </motion.div>
           ))}
         </motion.div>

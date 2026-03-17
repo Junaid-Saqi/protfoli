@@ -76,7 +76,7 @@ const cardVariants = {
 export default function Services() {
   return (
     <section id="services" className="py-24 md:py-32 px-6">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -102,26 +102,24 @@ export default function Services() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-80px' }}
-          className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="mt-16 border-t border-border pt-12 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16"
         >
           {services.map((service) => (
             <motion.div
               key={service.title}
               variants={cardVariants}
-              data-hover
-              className="group p-8 border border-border rounded-xl bg-white
-                         transition-all duration-300
-                         hover:shadow-xl hover:-translate-y-2 hover:border-accent/20"
+              className="flex flex-col items-start group"
             >
-              <div className="text-text-secondary group-hover:text-accent transition-colors duration-300 group-hover:scale-110 inline-block transform-gpu">
+              <div className="text-text-secondary group-hover:text-accent transition-colors duration-300 transform-gpu">
                 {service.icon}
               </div>
-              <h3 className="mt-5 text-lg font-semibold tracking-tight">
+              <h3 className="mt-6 text-lg font-semibold tracking-tight uppercase">
                 {service.title}
               </h3>
-              <p className="mt-3 text-sm text-text-secondary leading-relaxed">
+              <p className="mt-4 text-sm text-text-secondary leading-relaxed">
                 {service.description}
               </p>
+              <div className="mt-8 w-12 h-[1px] bg-border group-hover:w-full transition-all duration-500" />
             </motion.div>
           ))}
         </motion.div>
