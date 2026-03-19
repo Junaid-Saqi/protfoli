@@ -13,9 +13,7 @@ export default function Hero() {
   const imageRef = useRef(null);
   const leftTextRef = useRef(null);
   const rightTextRef = useRef(null);
-  const scrollIndicatorRef = useRef(null);
   
-  const [isMouseInHero, setIsMouseInHero] = useState(false);
   const [time, setTime] = useState(
     new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
   );
@@ -44,6 +42,7 @@ export default function Hero() {
       });
 
       // Bottom left text reveals from right (off-screen) to left as user scrolls
+      // It starts WAY off-screen right
       gsap.fromTo(bottomTextRef.current,
         { x: '100vw' },
         {
@@ -80,29 +79,6 @@ export default function Hero() {
         }
       });
 
-      // Mouse tracking for scroll indicator
-      const handleMouseMove = (e) => {
-        if (!sectionRef.current || !scrollIndicatorRef.current) return;
-        
-        const rect = sectionRef.current.getBoundingClientRect();
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-
-        gsap.to(scrollIndicatorRef.current, {
-          x: mouseX,
-          y: mouseY,
-          duration: 0.6,
-          ease: 'power2.out',
-          overwrite: 'auto'
-        });
-      };
-
-      sectionRef.current.addEventListener('mousemove', handleMouseMove);
-      
-      return () => {
-        sectionRef.current?.removeEventListener('mousemove', handleMouseMove);
-      };
-
     }, sectionRef);
 
     return () => ctx.revert();
@@ -112,9 +88,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      onMouseEnter={() => setIsMouseInHero(true)}
-      onMouseLeave={() => setIsMouseInHero(false)}
-      className="relative w-full h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-bg cursor-none"
+      className="relative w-full h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-bg"
     >
       {/* Absolute Navbar matching layout */}
       <nav className="absolute top-0 left-0 w-full px-6 py-8 flex justify-between items-center z-50 mix-blend-difference text-white text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase pointer-events-none">
@@ -146,6 +120,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Large Overlapping Split Text */}
+      {/* Slightly inward padding from original 12 to 24 */}
       <div className="absolute top-1/2 left-0 w-full -translate-y-1/2 flex justify-between items-center px-6 md:px-24 lg:px-32 z-30 pointer-events-none mix-blend-difference text-white">
         
         {/* Left Side Group */}
@@ -181,22 +156,17 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Interactive Scroll Down Indicator */}
+      {/* Scroll Down Indicator */}
       <motion.div
-        ref={scrollIndicatorRef}
         initial={{ opacity: 0 }}
-        animate={{ 
-          opacity: isMouseInHero ? 1 : 0,
-          scale: isMouseInHero ? 1 : 0.8
-        }}
-        transition={{ duration: 0.4 }}
-        className="absolute top-0 left-0 z-40 pointer-events-none mix-blend-difference text-white text-[9px] md:text-[10px] font-bold tracking-[0.2em] text-center uppercase"
-        style={{ transform: 'translate(-50%, -50%)' }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.2, duration: 1 }}
+        className="absolute bottom-[25vh] md:bottom-32 left-1/2 -translate-x-1/2 z-20 mix-blend-difference text-white text-[9px] md:text-[11px] font-semibold tracking-[0.2em] text-center uppercase pointer-events-none"
       >
         <span className="text-accent">Scroll</span><br /><span>Down</span>
       </motion.div>
 
-      {/* Bottom Text */}
+      {/* Bottom Text (Left corner and Right corner) */}
       <div className="absolute bottom-8 left-0 w-full z-20 overflow-hidden mix-blend-difference text-white flex justify-between items-end px-6 md:px-8 pointer-events-none">
         <p
           ref={bottomTextRef}
