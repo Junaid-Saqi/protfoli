@@ -1,26 +1,26 @@
 import { motion } from 'framer-motion';
-import gif1 from '../assets/gifs/ezgif.com-animated-gif-maker.gif';
-import gif2 from '../assets/gifs/ezgif.com-animated-gif-maker (1).gif';
-import gif3 from '../assets/gifs/ezgif.com-animated-gif-maker (2).gif';
+import project1 from '..//assets/gifs/broke.gif';
+import project2 from '..//assets/gifs/cashwavye.gif';
+import project3 from '..//assets/gifs/fatguess.gif';
 
 const projects = [
   {
-    title: 'Brand Identity Project',
-    category: 'Branding',
+    title: 'Fatguess',
+    category: 'NFTs',
     description: 'A clean and modern branding system for a creative business.',
-    image: gif1,
+    image: project1,
   },
   {
-    title: 'UI Design Concept',
-    category: 'UI/UX',
+    title: 'Cashwavye',
+    category: 'WEB3',
     description: 'A sleek and interactive interface design for a digital product.',
-    image: gif2,
+    image: project2,
   },
   {
-    title: 'Landing Page Experience',
-    category: 'Web Design',
+    title: 'Broke-coin',
+    category: 'Web3',
     description: 'A responsive and animated landing page focused on storytelling.',
-    image: gif3,
+    image: project3,
   },
 ];
 
