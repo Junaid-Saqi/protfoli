@@ -1,9 +1,15 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import emailjs from 'emailjs-com';
+
+const SERVICE_ID = 'service_zz5l0eo';
+const TEMPLATE_ID = 'template_ki5caqw';
+const PUBLIC_KEY = 'yus7xgIE2q8EMen15';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -11,9 +17,25 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setForm({ name: '', email: '', message: '' });
+    setLoading(true);
+
+    const templateParams = {
+      from_name: form.name,
+      from_email: form.email,
+      message: form.message,
+    };
+
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+      .then(() => {
+        setSubmitted(true);
+        setLoading(false);
+        setForm({ name: '', email: '', message: '' });
+        setTimeout(() => setSubmitted(false), 3000);
+      })
+      .catch((error) => {
+        console.error('Email send failed:', error);
+        setLoading(false);
+      });
   };
 
   return (
@@ -115,13 +137,14 @@ export default function Contact() {
              </div>
 
              <div className="pt-4">
-               <button
-                 type="submit"
-                 className="group flex items-center gap-4 text-[10px] font-bold tracking-[0.3em] uppercase"
-               >
-                 <span>{submitted ? '✓ Sent' : 'Send Inquiry'}</span>
-                 <div className="w-12 h-[1px] bg-accent group-hover:w-24 transition-all duration-500" />
-               </button>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="group flex items-center gap-4 text-[10px] font-bold tracking-[0.3em] uppercase disabled:opacity-50"
+                >
+                  <span>{submitted ? '✓ Sent' : loading ? 'Sending...' : 'Send Inquiry'}</span>
+                  <div className="w-12 h-[1px] bg-accent group-hover:w-24 transition-all duration-500" />
+                </button>
              </div>
            </motion.form>
         </div>
