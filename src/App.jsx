@@ -5,7 +5,6 @@ import HorizontalScrollText from './components/HorizontalScrollText';
 import About from './components/About';
 import Skills from './components/Skills';
 import Services from './components/Services';
-import SpotlightReveal from './components/SpotlightReveal';
 import SelectedWork from './components/SelectedWork';
 import Experience from './components/Experience';
 import Testimonials from './components/Testimonials';
@@ -13,10 +12,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
 import { useRef, useState, useEffect } from 'react';
-
-import spotlightImg from './assets/spotlight.png';
-// import bgMusic from './assets/flying-relaxing-sleep-music-for-meditation-stress-relief-relaxation-by-peder_hWohu3ue.mp3';
-const bgMusic = ""; // Placeholder for missing asset
+import bgMusic from './bg-music/quietphase-calm-ambient-491577.mp3';
 
 export default function App() {
   const mainContentRef = useRef(null);
@@ -36,7 +32,6 @@ export default function App() {
   };
 
   const startAudio = () => {
-    if (!bgMusic) return;
     audioRef.current.play().catch(err => console.log("Audio playback failed:", err));
   };
 
@@ -64,7 +59,6 @@ export default function App() {
               <About />
               <Skills />
               <Services />
-              <SpotlightReveal image={spotlightImg} />
               <SelectedWork />
               <Experience />
               <Testimonials />

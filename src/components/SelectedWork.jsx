@@ -1,26 +1,26 @@
 import { motion } from 'framer-motion';
-import project1 from '..//assets/gifs/broke.gif';
-import project2 from '..//assets/gifs/cashwavye.gif';
-import project3 from '..//assets/gifs/fatguess.gif';
+import gif1 from '../assets/gifs/broke.gif';
+import gif2 from '../assets/gifs/chashwavy.gif';
+import gif3 from '../assets/gifs/bueran.gif';
 
 const projects = [
   {
     title: 'Fatguess',
     category: 'NFTs',
-    description: 'A clean and modern branding system for a creative business.',
-    image: project1,
+    description: 'A playful NFT game where players predict and compete on crypto market movements. Features custom tokenomics and a gamified betting system.',
+    image: gif1,
   },
   {
     title: 'Cashwavye',
     category: 'WEB3',
-    description: 'A sleek and interactive interface design for a digital product.',
-    image: project2,
+    description: 'A crypto payment platform enabling seamless transactions and transfers. Built with focus on user experience and fast settlement times.',
+    image: gif2,
   },
   {
-    title: 'Broke-coin',
+    title: 'Bueran',
     category: 'Web3',
-    description: 'A responsive and animated landing page focused on storytelling.',
-    image: project3,
+    description: 'A decentralized finance protocol offering yield farming and staking opportunities. Features automated strategies and real-time analytics.',
+    image: gif3,
   },
 ];
 
