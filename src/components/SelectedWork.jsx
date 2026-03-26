@@ -1,26 +1,26 @@
 import { motion } from 'framer-motion';
-import project1 from '../assets/project1.png';
-import project2 from '../assets/project2.png';
-import project3 from '../assets/project3.png';
+import gif1 from '../assets/gifs/ezgif.com-animated-gif-maker.gif';
+import gif2 from '../assets/gifs/ezgif.com-animated-gif-maker (1).gif';
+import gif3 from '../assets/gifs/ezgif.com-animated-gif-maker (2).gif';
 
 const projects = [
   {
     title: 'Brand Identity Project',
     category: 'Branding',
     description: 'A clean and modern branding system for a creative business.',
-    image: project1,
+    image: gif1,
   },
   {
     title: 'UI Design Concept',
     category: 'UI/UX',
     description: 'A sleek and interactive interface design for a digital product.',
-    image: project2,
+    image: gif2,
   },
   {
     title: 'Landing Page Experience',
     category: 'Web Design',
     description: 'A responsive and animated landing page focused on storytelling.',
-    image: project3,
+    image: gif3,
   },
 ];
 
