@@ -5,9 +5,9 @@ import gif3 from '../assets/gifs/bueran.gif';
 
 const projects = [
   {
-    title: 'Fatguess',
-    category: 'NFTs',
-    description: 'A playful NFT game where players predict and compete on crypto market movements. Features custom tokenomics and a gamified betting system.',
+    title: 'Broke',
+    category: 'Meme Coin',
+    description: 'A community-driven meme coin project with playful branding and viral marketing campaigns across social platforms.',
     image: gif1,
   },
   {
