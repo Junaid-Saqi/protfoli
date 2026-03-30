@@ -1,33 +1,58 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import gif1 from '../assets/gifs/broke.gif';
 import gif2 from '../assets/gifs/chashwavy.gif';
 import gif3 from '../assets/gifs/bueran.gif';
 
 const projects = [
   {
-    title: 'Broke',
-    category: 'Meme Coin',
-    description: 'A community-driven meme coin project with playful branding and viral marketing campaigns across social platforms.',
-    image: gif1,
-    link: 'https://rebroke-main.vercel.app',
-  },
-  {
-    title: 'Cashwavye',
+    title: 'Cashwavy',
     category: 'WEB3',
     description: 'A crypto payment platform enabling seamless transactions and transfers. Built with focus on user experience and fast settlement times.',
     image: gif2,
     link: 'https://cashwavy-three.vercel.app/dashboard',
   },
   {
-    title: 'Bueran',
+    title: 'Luna',
     category: 'Web3',
     description: 'A decentralized finance protocol offering yield farming and staking opportunities. Features automated strategies and real-time analytics.',
     image: gif3,
     link: 'https://lunaioio.vercel.app',
   },
+  {
+    title: 'NFT One',
+    category: 'NFT',
+    description: 'A community-driven meme coin project with playful branding and viral marketing campaigns across social platforms.',
+    image: gif1,
+    link: 'https://nft-one-beta.vercel.app',
+  },
+  {
+    title: 'Chunky Doges',
+    category: 'Meme Coin',
+    description: 'A community-driven meme coin project with playful branding and viral marketing campaigns across social platforms.',
+    image: gif1,
+    link: 'https://chunky-doges-beta.vercel.app',
+  },
+  {
+    title: 'Lingu',
+    category: 'Web3',
+    description: 'A decentralized finance protocol offering yield farming and staking opportunities. Features automated strategies and real-time analytics.',
+    image: gif3,
+    link: 'https://lingu1.vercel.app',
+  },
+  {
+    title: 'Rebroke',
+    category: 'Meme Coin',
+    description: 'A community-driven meme coin project with playful branding and viral marketing campaigns across social platforms.',
+    image: gif1,
+    link: 'https://rebroke-main.vercel.app',
+  },
 ];
 
 export default function SelectedWork() {
+  const [showAll, setShowAll] = useState(false);
+  const displayedProjects = showAll ? projects : projects.slice(0, 3);
+
   return (
     <section id="work" className="py-24 md:py-32 px-6">
       <div className="max-w-4xl mx-auto">
@@ -52,7 +77,7 @@ export default function SelectedWork() {
         </motion.h2>
 
         <div className="mt-16 space-y-24 md:space-y-32">
-          {projects.map((project) => (
+          {displayedProjects.map((project) => (
             <motion.div  
               key={project.title}
               initial={{ opacity: 0, y: 60 }}
@@ -83,15 +108,15 @@ export default function SelectedWork() {
                   {project.description}
                 </p>
                 <div className="mt-8">
-                   <a 
-                     href={project.link}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="inline-flex items-center gap-4 text-[10px] font-bold tracking-[0.2em] uppercase cursor-pointer hover:gap-6 transition-all duration-300"
-                   >
-                      Explore Project
-                      <div className="w-8 h-[1px] bg-accent" />
-                    </a>
+                  <a 
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-4 text-[10px] font-bold tracking-[0.2em] uppercase cursor-pointer hover:gap-6 transition-all duration-300"
+                  >
+                    Explore Project
+                    <div className="w-8 h-[1px] bg-accent" />
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -105,9 +130,12 @@ export default function SelectedWork() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-16 md:mt-24 flex justify-center"
         >
-          <button className="group px-8 py-4 border border-accent/30 hover:border-accent hover:bg-accent/5 transition-all duration-500">
+          <button 
+            onClick={() => setShowAll(!showAll)}
+            className="group px-8 py-4 border border-accent/30 hover:border-accent hover:bg-accent/5 transition-all duration-500"
+          >
             <span className="text-xs font-bold tracking-[0.2em] uppercase text-text-secondary group-hover:text-accent transition-colors duration-300">
-              Show More
+              {showAll ? 'Show Less' : 'Show More'}
             </span>
           </button>
         </motion.div>
