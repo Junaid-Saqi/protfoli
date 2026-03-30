@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import profileImg from '../assets/profile.png';
 import resumeFile from '../assets/Resume/Profile.pdf';
-import clockTickSound from '../sounds/clock-tick.mp3';
+import clockTickSound from '../sounds/freesound_community-ticking-clock_1-27477.mp3';
 
 gsap.registerPlugin(ScrollTrigger);
 
