@@ -54,6 +54,13 @@ const projects = [
     image: gif3,
     link: 'https://fatguess.vercel.app',
   },
+  {
+    title: 'Stor',
+    category: 'E-Commerce',
+    description: 'A modern e-commerce platform with seamless shopping experience, featuring product browsing, cart management, and secure checkout.',
+    image: gif1,
+    link: 'https://volt-store-lab.vercel.app',
+  },
 ];
 
 export default function SelectedWork() {
