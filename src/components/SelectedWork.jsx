@@ -7,7 +7,7 @@ import gif3 from '../assets/gifs/bueran.gif';
 const projects = [
   {
     title: 'Cashwavy',
-    category: 'WEB3',
+    category: 'Web3',
     description: 'A crypto payment platform enabling seamless transactions and transfers. Built with focus on user experience and fast settlement times.',
     image: gif2,
     link: 'https://cashwavy-three.vercel.app/dashboard',
@@ -20,8 +20,8 @@ const projects = [
     link: 'https://lunaioio.vercel.app',
   },
   {
-    title: 'NFT One',
-    category: 'NFT',
+    title: 'CityScape',
+    category: 'Web3',
     description: 'A community-driven meme coin project with playful branding and viral marketing campaigns across social platforms.',
     image: gif1,
     link: 'https://nft-one-beta.vercel.app',
@@ -46,6 +46,13 @@ const projects = [
     description: 'A community-driven meme coin project with playful branding and viral marketing campaigns across social platforms.',
     image: gif1,
     link: 'https://rebroke-main.vercel.app',
+  },
+  {
+    title: 'FatGuess',
+    category: 'Web3 Market Place',
+    description: 'A decentralized finance protocol offering yield farming and staking opportunities. Features automated strategies and real-time analytics.',
+    image: gif3,
+    link: 'https://fatguess.vercel.app',
   },
 ];
 
