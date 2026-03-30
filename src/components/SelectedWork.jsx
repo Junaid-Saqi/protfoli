@@ -9,18 +9,21 @@ const projects = [
     category: 'Meme Coin',
     description: 'A community-driven meme coin project with playful branding and viral marketing campaigns across social platforms.',
     image: gif1,
+    link: 'https://rebroke-main.vercel.app',
   },
   {
     title: 'Cashwavye',
     category: 'WEB3',
     description: 'A crypto payment platform enabling seamless transactions and transfers. Built with focus on user experience and fast settlement times.',
     image: gif2,
+    link: 'https://cashwavy-three.vercel.app/dashboard',
   },
   {
     title: 'Bueran',
     category: 'Web3',
     description: 'A decentralized finance protocol offering yield farming and staking opportunities. Features automated strategies and real-time analytics.',
     image: gif3,
+    link: 'https://lunaioio.vercel.app',
   },
 ];
 
@@ -49,7 +52,7 @@ export default function SelectedWork() {
         </motion.h2>
 
         <div className="mt-16 space-y-24 md:space-y-32">
-          {projects.map((project, i) => (
+          {projects.map((project) => (
             <motion.div  
               key={project.title}
               initial={{ opacity: 0, y: 60 }}
@@ -80,15 +83,34 @@ export default function SelectedWork() {
                   {project.description}
                 </p>
                 <div className="mt-8">
-                   <div className="inline-flex items-center gap-4 text-[10px] font-bold tracking-[0.2em] uppercase cursor-pointer hover:gap-6 transition-all duration-300">
-                     Explore Project
-                     <div className="w-8 h-[1px] bg-accent" />
-                   </div>
+                   <a 
+                     href={project.link}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="inline-flex items-center gap-4 text-[10px] font-bold tracking-[0.2em] uppercase cursor-pointer hover:gap-6 transition-all duration-300"
+                   >
+                      Explore Project
+                      <div className="w-8 h-[1px] bg-accent" />
+                    </a>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-16 md:mt-24 flex justify-center"
+        >
+          <button className="group px-8 py-4 border border-accent/30 hover:border-accent hover:bg-accent/5 transition-all duration-500">
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-text-secondary group-hover:text-accent transition-colors duration-300">
+              Show More
+            </span>
+          </button>
+        </motion.div>
       </div>
     </section>
   );
