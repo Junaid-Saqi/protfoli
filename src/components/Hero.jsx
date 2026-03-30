@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import profileImg from '../assets/profile.png';
 import resumeFile from '../assets/Resume/Profile.pdf';
+import clockTickSound from '../sounds/clock-tick.mp3';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,35 +21,15 @@ export default function Hero() {
   const tickAudioRef = useRef(null);
 
   useEffect(() => {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    const audioCtx = new AudioContext();
-    const oscillator = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
-    
-    oscillator.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-    
-    oscillator.frequency.value = 800;
-    oscillator.type = 'sine';
-    gainNode.gain.value = 0;
-    
-    oscillator.start();
-    tickAudioRef.current = { audioCtx, oscillator, gainNode };
-
-    return () => {
-      oscillator.stop();
-      audioCtx.close();
-    };
+    tickAudioRef.current = new Audio(clockTickSound);
+    tickAudioRef.current.volume = 0.5;
   }, []);
 
   useEffect(() => {
     const playTick = () => {
-      if (tickAudioRef.current && tickAudioRef.current.audioCtx) {
-        const { audioCtx, gainNode } = tickAudioRef.current;
-        const now = audioCtx.currentTime;
-        gainNode.gain.cancelScheduledValues(now);
-        gainNode.gain.setValueAtTime(0.05, now);
-        gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+      if (tickAudioRef.current) {
+        tickAudioRef.current.currentTime = 0;
+        tickAudioRef.current.play().catch(() => {});
       }
     };
 
