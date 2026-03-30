@@ -46,7 +46,7 @@ export default function Footer() {
       </div>
 
       <div className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0 text-[10px] font-bold tracking-[0.2em] uppercase text-white/30">
-        <p>© 2024 Junaid Mirza — All rights reserved.</p>
+        <p>© 2026 Junaid Mirza — All rights reserved.</p>
         <p className="flex gap-8">
           <span>Visual Designer</span>
           <span>Creative Developer</span>
