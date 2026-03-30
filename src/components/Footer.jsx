@@ -22,10 +22,10 @@ export default function Footer() {
             Let's build <br /> something <span className="font-serif italic italic text-white/50">great</span> together.
           </h2>
           <a
-            href="mailto:hello@junaidmirza.com"
+            href="mailto:maskedwolf211@gmail.com"
             className="text-lg md:text-xl font-medium tracking-wide hover:opacity-50 transition-opacity underline underline-offset-8"
           >
-            hello@junaidmirza.com
+            maskedwolf211@gmail.com
           </a>
         </div>
 

@@ -46,7 +46,7 @@ export default function App() {
           {/* Global Mute Toggle */}
           <button 
             onClick={toggleMute}
-            className="fixed bottom-8 right-8 z-[90] p-4 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white text-[10px] font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-300 pointer-events-auto mix-blend-difference"
+            className="fixed bottom-8 left-8 z-[90] p-4 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white text-[10px] font-bold tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-300 pointer-events-auto mix-blend-difference"
           >
             {isMuted ? 'Unmute' : 'Mute'}
           </button>

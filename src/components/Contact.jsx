@@ -67,10 +67,10 @@ export default function Contact() {
              <div className="mt-12">
             <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/30 mb-4">Direct Email</p>
             <a
-              href="mailto:hello@junaidmirza.com"
+              href="mailto:maskedwolf211@gmail.com"
               className="text-lg md:text-xl font-normal tracking-tight hover:opacity-50 transition-opacity underline underline-offset-8 decoration-white/10"
             >
-              hello@junaidmirza.com
+              maskedwolf211@gmail.com
             </a>
           </div>
              <div className="mt-8 flex flex-col gap-4 non-italic font-bold tracking-[0.1em] uppercase text-[10px]">
