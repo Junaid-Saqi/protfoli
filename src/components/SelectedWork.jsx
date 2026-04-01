@@ -1,10 +1,14 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import cashwavy from '../assets/screenshots/cashwavye.png';
 import luna from '../assets/screenshots/lunaloto.png';
 import cityscape from '../assets/screenshots/cityscape.png';
 import chunkyDoge from '../assets/screenshots/chunky-doge.png';
 import fatguess from '../assets/screenshots/fatguess.png';
+import lunaSite from '../assets/screenshots/lunaloto-site.png';
+import cityscapeSite from '../assets/screenshots/cityscape-site.png';
+import chunkyDogeSite from '../assets/screenshots/chunky-doges-site.png';
+import fatguessSite from '../assets/screenshots/fatguess-site.png';
 
 const projects = [
   {
@@ -12,6 +16,7 @@ const projects = [
     category: 'Web3',
     description: 'A crypto payment platform enabling seamless transactions and transfers. Built with focus on user experience and fast settlement times.',
     image: cashwavy,
+    siteImage: cashwavy,
     link: 'https://cashwavy-three.vercel.app/dashboard',
   },
   {
@@ -19,6 +24,7 @@ const projects = [
     category: 'Web3',
     description: 'A decentralized finance protocol offering yield farming and staking opportunities. Features automated strategies and real-time analytics.',
     image: luna,
+    siteImage: lunaSite,
     link: 'https://lunaioio.vercel.app',
   },
   {
@@ -26,6 +32,7 @@ const projects = [
     category: 'Web3',
     description: 'A community-driven meme coin project with playful branding and viral marketing campaigns across social platforms.',
     image: cityscape,
+    siteImage: cityscapeSite,
     link: 'https://nft-one-beta.vercel.app',
   },
   {
@@ -33,6 +40,7 @@ const projects = [
     category: 'Meme Coin',
     description: 'A community-driven meme coin project with playful branding and viral marketing campaigns across social platforms.',
     image: chunkyDoge,
+    siteImage: chunkyDogeSite,
     link: 'https://chunky-doges-beta.vercel.app',
   },
   {
@@ -40,15 +48,53 @@ const projects = [
     category: 'Web3 Market Place',
     description: 'A decentralized finance protocol offering yield farming and staking opportunities. Features automated strategies and real-time analytics.',
     image: fatguess,
+    siteImage: fatguessSite,
     link: 'https://fatguess.vercel.app',
   },
 ];
 
 export default function SelectedWork() {
   const [showAll, setShowAll] = useState(false);
+  const [previewImage, setPreviewImage] = useState(null);
   const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
+  useEffect(() => {
+    if (previewImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [previewImage]);
+
   return (
+    <>
+    {previewImage && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-8"
+        onClick={() => setPreviewImage(null)}
+      >
+        <button
+          className="absolute top-6 right-6 text-white text-3xl hover:text-accent transition-colors"
+          onClick={() => setPreviewImage(null)}
+        >
+          &times;
+        </button>
+        <motion.img
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          src={previewImage}
+          alt="Preview"
+          className="max-w-full max-h-full object-contain rounded-sm"
+          onClick={(e) => e.stopPropagation()}
+        />
+      </motion.div>
+    )}
+
     <section id="work" className="py-24 md:py-32 px-6">
       <div className="max-w-4xl mx-auto">
         <motion.span
@@ -102,7 +148,7 @@ export default function SelectedWork() {
                 <p className="mt-4 text-text-secondary text-sm leading-relaxed">
                   {project.description}
                 </p>
-                <div className="mt-8">
+                <div className="mt-8 flex items-center gap-8">
                   <a 
                     href={project.link}
                     target="_blank"
@@ -112,6 +158,12 @@ export default function SelectedWork() {
                     Explore Project
                     <div className="w-8 h-[1px] bg-accent" />
                   </a>
+                  <button
+                    onClick={() => setPreviewImage(project.siteImage)}
+                    className="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase cursor-pointer hover:text-accent transition-colors duration-300"
+                  >
+                    Preview
+                  </button>
                 </div>
               </div>
             </motion.div>
@@ -136,5 +188,6 @@ export default function SelectedWork() {
         </motion.div>
       </div>
     </section>
+    </>
   );
 }

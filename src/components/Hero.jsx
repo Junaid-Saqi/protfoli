@@ -14,11 +14,25 @@ export default function Hero() {
   const imageRef = useRef(null);
   const leftTextRef = useRef(null);
   const rightTextRef = useRef(null);
+  const scrollIndicatorRef = useRef(null);
   
   const [time, setTime] = useState(
     new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
   );
   const tickAudioRef = useRef(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (scrollIndicatorRef.current) {
+        const { clientX, clientY } = e;
+        const moveX = (clientX - window.innerWidth / 2) * 0.02;
+        const moveY = (clientY - window.innerHeight / 2) * 0.02;
+        scrollIndicatorRef.current.style.transform = `translate(calc(-50% + ${moveX}px), ${moveY}px)`;
+      }
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   useEffect(() => {
     tickAudioRef.current = new Audio(clockTickSound);
@@ -174,10 +188,11 @@ export default function Hero() {
 
       {/* Scroll Down Indicator */}
       <motion.div
+        ref={scrollIndicatorRef}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.2, duration: 1 }}
-        className="absolute bottom-[25vh] md:bottom-32 left-1/2 -translate-x-1/2 z-20 mix-blend-difference text-white text-[9px] md:text-[11px] font-semibold tracking-[0.2em] text-center uppercase pointer-events-none"
+        className="absolute bottom-[25vh] md:bottom-32 left-1/2 z-20 mix-blend-difference text-white text-[9px] md:text-[11px] font-semibold tracking-[0.2em] text-center uppercase pointer-events-none"
       >
         <span className="text-accent">Scroll</span><br /><span>Down</span>
       </motion.div>
