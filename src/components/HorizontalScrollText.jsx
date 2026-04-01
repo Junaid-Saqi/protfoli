@@ -20,7 +20,7 @@ export default function HorizontalScrollText() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'center center', // Pin when the section reaches the center of the viewport
-          end: '+=150%',          // Keep pinned for 150% of the viewport height (creates longer scroll distance)
+          end: '+=300%',          // Keep pinned for 300% of the viewport height (creates longer scroll distance)
           pin: true,              // Freeze the section in place
           scrub: 1,               // Smooth scrubbing
         },

@@ -19,7 +19,7 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 md:gap-0">
         <div>
           <h2 className="text-4xl md:text-5xl font-light tracking-tighter mb-6">
-            Let's build <br /> something <span className="font-serif italic italic text-white/50">great</span> together.
+            Let's build <br /> something <span className="font-serif italic text-red-500">great</span> together.
           </h2>
           <a
             href="mailto:maskedwolf211@gmail.com"
