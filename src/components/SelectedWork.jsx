@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import cashwavy from '../assets/screenshots/cashwavye.png';
+import cashwavyLong from '../assets/screenshots/cashwvye.png';
 import luna from '../assets/screenshots/lunaloto.png';
 import cityscape from '../assets/screenshots/cityscape.png';
 import chunkyDoge from '../assets/screenshots/chunky-doge.png';
@@ -16,7 +17,7 @@ const projects = [
     category: 'Web3',
     description: 'A crypto payment platform enabling seamless transactions and transfers. Built with focus on user experience and fast settlement times.',
     image: cashwavy,
-    siteImage: cashwavy,
+    siteImage: cashwavyLong,
     link: 'https://cashwavy-three.vercel.app/dashboard',
   },
   {

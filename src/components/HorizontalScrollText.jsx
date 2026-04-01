@@ -9,7 +9,7 @@ export default function HorizontalScrollText() {
   const textRef = useRef(null);
   const charsRef = useRef([]);
 
-  const text = "I am Junaid Mirza—a joyful dreamer and developer who writes code the way a poet writes verses, turning imagination into living digital worlds.";
+  const text = "I am Junaid Mirza a joyful dreamer and developer who writes code the way a poet writes verses, turning imagination into living digital worlds.";
   // Split into characters for a much smoother, fluid "fisheye" center-scaling effect
   const chars = text.split("");
 
@@ -26,11 +26,13 @@ export default function HorizontalScrollText() {
         },
       });
 
-      // Horizontal translation: Start centered (first character) and scroll until end is centered (last character)
+      const textWidth = textRef.current?.scrollWidth || 0;
+      const scrollDist = textWidth / 2;
+
       tl.fromTo(textRef.current, 
-        { xPercent: 50 }, 
+        { x: scrollDist }, 
         {
-          xPercent: -50, 
+          x: -scrollDist, 
           ease: 'none',
           duration: 1,
         }
@@ -94,8 +96,8 @@ export default function HorizontalScrollText() {
     >
       <div 
         ref={textRef} 
-        className="whitespace-nowrap flex items-center justify-start origin-left"
-        style={{ willChange: 'transform' }}
+        className="whitespace-nowrap flex items-center origin-center"
+        style={{ willChange: 'transform', transform: 'translateX(50vw)' }}
       >
         <h2 
           className="text-[5vw] md:text-[6vw] font-bold tracking-tighter leading-none select-none text-transparent flex items-center"

@@ -1,13 +1,17 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
 export default function CustomCursor() {
   const cursorRef = useRef(null);
   const followerRef = useRef(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
-    // Skip on touch devices
-    if (window.matchMedia('(pointer: coarse)').matches) return;
+    setIsTouchDevice(window.matchMedia('(pointer: coarse)').matches);
+  }, []);
+
+  useEffect(() => {
+    if (isTouchDevice) return;
 
     const cursor = cursorRef.current;
     const follower = followerRef.current;
@@ -16,7 +20,7 @@ export default function CustomCursor() {
     const moveCursor = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      const V_OFFSET = 8; // Offset upwards by 8 pixels
+      const V_OFFSET = 8;
       gsap.to(cursor, { x: mouseX, y: mouseY - V_OFFSET, duration: 0.1, ease: 'power2.out' });
       gsap.to(follower, { x: mouseX, y: mouseY - V_OFFSET, duration: 0.3, ease: 'power2.out' });
     };
@@ -31,24 +35,27 @@ export default function CustomCursor() {
       gsap.to(follower, { scale: 1, opacity: 0.08, duration: 0.3 });
     };
 
-    window.addEventListener('mousemove', moveCursor);
+    const attachListeners = () => {
+      const interactiveEls = document.querySelectorAll('a, button, input, textarea, [data-hover]');
+      interactiveEls.forEach(el => {
+        el.addEventListener('mouseenter', handleMouseEnter);
+        el.addEventListener('mouseleave', handleMouseLeave);
+      });
+    };
 
-    const interactiveEls = document.querySelectorAll('a, button, input, textarea, [data-hover]');
-    interactiveEls.forEach(el => {
-      el.addEventListener('mouseenter', handleMouseEnter);
-      el.addEventListener('mouseleave', handleMouseLeave);
-    });
+    window.addEventListener('mousemove', moveCursor);
+    attachListeners();
+
+    const observer = new MutationObserver(attachListeners);
+    observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       window.removeEventListener('mousemove', moveCursor);
-      interactiveEls.forEach(el => {
-        el.removeEventListener('mouseenter', handleMouseEnter);
-        el.removeEventListener('mouseleave', handleMouseLeave);
-      });
+      observer.disconnect();
     };
-  }, []);
+  }, [isTouchDevice]);
 
-  if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) {
+  if (isTouchDevice) {
     return null;
   }
 
