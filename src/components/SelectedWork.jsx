@@ -1,65 +1,46 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import gif1 from '../assets/gifs/broke.gif';
-import gif2 from '../assets/gifs/chashwavy.gif';
-import gif3 from '../assets/gifs/bueran.gif';
+import cashwavy from '../assets/screenshots/cashwvye.png';
+import luna from '../assets/screenshots/lunaloto.png';
+import cityscape from '../assets/screenshots/cityscape.png';
+import chunkyDoge from '../assets/screenshots/chunky-doge.png';
+import fatguess from '../assets/screenshots/fatguess.png';
 
 const projects = [
   {
     title: 'Cashwavy',
     category: 'Web3',
     description: 'A crypto payment platform enabling seamless transactions and transfers. Built with focus on user experience and fast settlement times.',
-    image: gif2,
+    image: cashwavy,
     link: 'https://cashwavy-three.vercel.app/dashboard',
   },
   {
     title: 'Luna',
     category: 'Web3',
     description: 'A decentralized finance protocol offering yield farming and staking opportunities. Features automated strategies and real-time analytics.',
-    image: gif3,
+    image: luna,
     link: 'https://lunaioio.vercel.app',
   },
   {
     title: 'CityScape',
     category: 'Web3',
     description: 'A community-driven meme coin project with playful branding and viral marketing campaigns across social platforms.',
-    image: gif1,
+    image: cityscape,
     link: 'https://nft-one-beta.vercel.app',
   },
   {
     title: 'Chunky Doges',
     category: 'Meme Coin',
     description: 'A community-driven meme coin project with playful branding and viral marketing campaigns across social platforms.',
-    image: gif1,
+    image: chunkyDoge,
     link: 'https://chunky-doges-beta.vercel.app',
-  },
-  {
-    title: 'Lingu',
-    category: 'Web3',
-    description: 'A decentralized finance protocol offering yield farming and staking opportunities. Features automated strategies and real-time analytics.',
-    image: gif3,
-    link: 'https://lingu1.vercel.app',
-  },
-  {
-    title: 'Rebroke',
-    category: 'Meme Coin',
-    description: 'A community-driven meme coin project with playful branding and viral marketing campaigns across social platforms.',
-    image: gif1,
-    link: 'https://rebroke-main.vercel.app',
   },
   {
     title: 'FatGuess',
     category: 'Web3 Market Place',
     description: 'A decentralized finance protocol offering yield farming and staking opportunities. Features automated strategies and real-time analytics.',
-    image: gif3,
+    image: fatguess,
     link: 'https://fatguess.vercel.app',
-  },
-  {
-    title: 'Stor',
-    category: 'E-Commerce',
-    description: 'A modern e-commerce platform with seamless shopping experience, featuring product browsing, cart management, and secure checkout.',
-    image: gif1,
-    link: 'https://volt-store-lab.vercel.app',
   },
 ];
 
