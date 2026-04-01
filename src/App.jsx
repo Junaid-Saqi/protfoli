@@ -12,7 +12,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
 import { useRef, useState, useEffect } from 'react';
-import bgMusic from './bg-music/quietphase-calm-ambient-491577.mp3';
+import bgMusic from './assets/bg-music/quietphase-calm-ambient-491577.mp3';
 
 export default function App() {
   const mainContentRef = useRef(null);
