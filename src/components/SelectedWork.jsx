@@ -18,7 +18,7 @@ const projects = [
     description: 'A crypto payment platform enabling seamless transactions and transfers. Built with focus on user experience and fast settlement times.',
     image: cashwavy,
     siteImage: cashwavyLong,
-    link: 'https://cashwavy-three.vercel.app/dashboard',
+    link: 'https://cashwavy-three.vercel.app/',
   },
   {
     title: 'Luna',
