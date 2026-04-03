@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
 const socialLinks = [
-  { name: 'Twitter', url: '#', icon: '𝕏' },
-  { name: 'LinkedIn', url: '#', icon: 'in' },
-  { name: 'Dribbble', url: '#', icon: '◉' },
-  { name: 'Behance', url: '#', icon: 'Bē' },
+  { name: 'Twitter', url: 'https://x.com/Junaid_Aly_', icon: '𝕏' },
+  { name: 'GitHub', url: 'https://github.com/Junaid-Saqi', icon: '⌂' },
+  { name: 'WhatsApp', url: 'https://wa.me/03555622899', icon: '◈' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/junaid-bro/', icon: 'in' },
 ];
 
 export default function Footer() {
@@ -32,15 +32,15 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-16">
           <div className="flex flex-col gap-4">
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/30">Navigation</span>
-            <a href="#about" className="text-sm hover:opacity-100 transition-opacity">About</a>
-            <a href="#work" className="text-sm hover:opacity-100 transition-opacity">Work</a>
-            <a href="#contact" className="text-sm hover:opacity-100 transition-opacity">Contact</a>
+            <a href="#about" className="text-sm hover:opacity-100 transition-opacity px-2 py-2 -mx-2">About</a>
+            <a href="#work" className="text-sm hover:opacity-100 transition-opacity px-2 py-2 -mx-2">Work</a>
+            <a href="#contact" className="text-sm hover:opacity-100 transition-opacity px-2 py-2 -mx-2">Contact</a>
           </div>
           <div className="flex flex-col gap-4">
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/30">Connect</span>
-            <a href="#" className="text-sm hover:opacity-100 transition-opacity">Instagram</a>
-            <a href="#" className="text-sm hover:opacity-100 transition-opacity">LinkedIn</a>
-            <a href="#" className="text-sm hover:opacity-100 transition-opacity">Twitter</a>
+            <a href="https://x.com/Junaid_Aly_" target="_blank" rel="noopener noreferrer" className="text-sm hover:opacity-100 transition-opacity px-2 py-2 -mx-2">Twitter</a>
+            <a href="https://github.com/Junaid-Saqi" target="_blank" rel="noopener noreferrer" className="text-sm hover:opacity-100 transition-opacity px-2 py-2 -mx-2">GitHub</a>
+            <a href="https://wa.me/03555622899" target="_blank" rel="noopener noreferrer" className="text-sm hover:opacity-100 transition-opacity px-2 py-2 -mx-2">WhatsApp</a>
           </div>
         </div>
       </div>

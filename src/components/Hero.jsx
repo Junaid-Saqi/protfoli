@@ -4,9 +4,26 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import profileImg from '../assets/profile.png';
 import resumeFile from '../assets/Resume/Profile.pdf';
-import clockTickSound from '../assets/sounds/freesound_community-ticking-clock_1-27477.mp3';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const playTickSound = () => {
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  const oscillator = audioContext.createOscillator();
+  const gainNode = audioContext.createGain();
+  
+  oscillator.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+  
+  oscillator.frequency.value = 800;
+  oscillator.type = 'sine';
+  
+  gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.05);
+  
+  oscillator.start(audioContext.currentTime);
+  oscillator.stop(audioContext.currentTime + 0.05);
+};
 
 export default function Hero() {
   const sectionRef = useRef(null);
@@ -19,7 +36,6 @@ export default function Hero() {
   const [time, setTime] = useState(
     new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
   );
-  const tickAudioRef = useRef(null);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -35,23 +51,9 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    tickAudioRef.current = new Audio(clockTickSound);
-    tickAudioRef.current.volume = 0.5;
-  }, []);
-
-  useEffect(() => {
-    const playTick = () => {
-      if (tickAudioRef.current) {
-        tickAudioRef.current.currentTime = 0;
-        tickAudioRef.current.play().catch(() => {});
-      }
-    };
-
-    playTick();
-
     const interval = setInterval(() => {
       setTime(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }));
-      playTick();
+      playTickSound();
     }, 1000);
     return () => clearInterval(interval);
   }, []);
@@ -121,15 +123,15 @@ export default function Hero() {
       className="relative w-full h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-bg"
     >
       {/* Absolute Navbar matching layout */}
-      <nav className="absolute top-0 left-0 w-full px-6 py-8 flex justify-between items-center z-50 mix-blend-difference text-white text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase pointer-events-none">
-        <div className="flex gap-4 md:gap-8">
-          <span className="pointer-events-auto">Junaid Mirza</span>
-          <a href="#work" className="hidden md:inline-block opacity-70 cursor-pointer pointer-events-auto hover:opacity-100 transition-opacity">Projects</a>
-          <a href={resumeFile} target="_blank" rel="noopener noreferrer" className="hidden md:inline-block opacity-70 cursor-pointer pointer-events-auto hover:opacity-100 transition-opacity">Resume</a>
-          <a href="#contact" className="hidden md:inline-block opacity-70 cursor-pointer pointer-events-auto hover:opacity-100 transition-opacity">Contact</a>
+      <nav className="absolute top-0 left-0 w-full px-6 py-8 flex justify-between items-center z-50 mix-blend-difference text-white text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase">
+        <div className="flex gap-4 md:gap-8 items-center">
+          <span className="cursor-default px-2 py-2">Junaid Mirza</span>
+          <a href="#work" className="hidden md:inline-block opacity-70 hover:opacity-100 transition-opacity px-2 py-2">Projects</a>
+          <a href={resumeFile} target="_blank" rel="noopener noreferrer" className="hidden md:inline-block opacity-70 hover:opacity-100 transition-opacity px-2 py-2">Resume</a>
+          <a href="#contact" className="hidden md:inline-block opacity-70 hover:opacity-100 transition-opacity px-2 py-2">Contact</a>
         </div>
         <div className="flex gap-4 md:gap-8">
-          <a href="https://www.linkedin.com/in/junaid-bro/" target="_blank" rel="noopener noreferrer" className="opacity-70 cursor-pointer pointer-events-auto hover:opacity-100 transition-opacity">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/junaid-bro/" target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity px-2 py-2">LinkedIn</a>
         </div>
       </nav>
 

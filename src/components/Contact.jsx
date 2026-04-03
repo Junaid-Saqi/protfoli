@@ -73,10 +73,12 @@ export default function Contact() {
               maskedwolf211@gmail.com
             </a>
           </div>
-             <div className="mt-8 flex flex-col gap-4 non-italic font-bold tracking-[0.1em] uppercase text-[10px]">
-               <a href="https://www.linkedin.com/in/junaid-bro/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors underline underline-offset-4 decoration-border">LinkedIn</a>
-               <a href="#" className="hover:text-accent transition-colors underline underline-offset-4 decoration-border">Awwwards</a>
-             </div>
+              <div className="mt-8 flex flex-col gap-4 non-italic font-bold tracking-[0.1em] uppercase text-[10px]">
+                <a href="https://x.com/Junaid_Aly_" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors underline underline-offset-4 decoration-border px-2 py-2 -mx-2">Twitter</a>
+                <a href="https://github.com/Junaid-Saqi" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors underline underline-offset-4 decoration-border px-2 py-2 -mx-2">GitHub</a>
+                <a href="https://wa.me/03555622899" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors underline underline-offset-4 decoration-border px-2 py-2 -mx-2">WhatsApp</a>
+                <a href="https://www.linkedin.com/in/junaid-bro/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors underline underline-offset-4 decoration-border px-2 py-2 -mx-2">LinkedIn</a>
+              </div>
            </div>
 
            <motion.form

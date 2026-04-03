@@ -119,54 +119,82 @@ export default function SelectedWork() {
         </motion.h2>
 
         <div className="mt-16 space-y-24 md:space-y-32">
-          {displayedProjects.map((project) => (
+          {displayedProjects.map((project, index) => (
             <motion.div  
               key={project.title}
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              whileHover={{ y: -10 }}
               className="group grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start"
             >
               {/* Thumbnail */}
-              <div className="md:col-span-7 overflow-hidden rounded-sm bg-card aspect-[16/10]">
+              <motion.div 
+                className="md:col-span-7 overflow-hidden rounded-sm bg-card aspect-[16/10] relative"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="absolute inset-0 border border-transparent group-hover:border-accent/50 z-10 rounded-sm transition-all duration-500" />
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
                   loading="lazy"
                 />
-              </div>
+                <motion.div 
+                  className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  initial={{ opacity: 0 }}
+                />
+              </motion.div>
 
               {/* Info */}
-              <div className="md:col-span-5 pt-2">
-                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-text-secondary">
+              <motion.div 
+                className="md:col-span-5 pt-2 px-2 py-2"
+                initial={{ x: index % 2 === 0 ? 30 : -30, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+              >
+                <motion.span 
+                  className="text-[10px] font-bold tracking-[0.2em] uppercase text-text-secondary block"
+                  whileHover={{ color: '#ef4444', x: 5 }}
+                  transition={{ duration: 0.3 }}
+                >
                   {project.category}
-                </span>
-                <h3 className="mt-4 text-xl md:text-2xl font-semibold tracking-tight uppercase">
+                </motion.span>
+                <motion.h3 
+                  className="mt-4 text-xl md:text-2xl font-semibold tracking-tight uppercase"
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.3 }}
+                >
                   {project.title}
-                </h3>
+                </motion.h3>
                 <p className="mt-4 text-text-secondary text-sm leading-relaxed">
                   {project.description}
                 </p>
                 <div className="mt-8 flex items-center gap-8">
-                  <a 
+                  <motion.a 
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-4 text-[10px] font-bold tracking-[0.2em] uppercase cursor-pointer hover:gap-6 transition-all duration-300"
+                    className="inline-flex items-center gap-4 text-[10px] font-bold tracking-[0.2em] uppercase cursor-pointer hover:gap-6 transition-all duration-300 px-2 py-2"
+                    whileHover={{ x: 5 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     Explore Project
                     <div className="w-8 h-[1px] bg-accent" />
-                  </a>
-                  <button
+                  </motion.a>
+                  <motion.button
                     onClick={() => setPreviewImage(project.siteImage)}
-                    className="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase cursor-pointer hover:text-accent transition-colors duration-300"
+                    className="inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase cursor-pointer hover:text-accent transition-colors duration-300 px-2 py-2"
+                    whileHover={{ x: 5 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     Preview
-                  </button>
+                  </motion.button>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
