@@ -10,8 +10,18 @@ import lunaSite from '../assets/screenshots/lunaloto-site.png';
 import cityscapeSite from '../assets/screenshots/cityscape-site.png';
 import chunkyDogeSite from '../assets/screenshots/chunky-doges-site.png';
 import fatguessSite from '../assets/screenshots/fatguess-site.png';
+import blast from '../assets/screenshots/blast.png';
+import blastSite from '../assets/screenshots/blast-wheel-racers.png';
 
 const projects = [
+  {
+    title: 'Blast Wheel Racers',
+    category: 'Web3 / Gaming',
+    description: 'A high-octane, decentralized racing experience featuring unique digital assets and competitive multiplayer mechanics.',
+    image: blast,
+    siteImage: blastSite,
+    link: 'https://blast-wheel-racers.vercel.app/',
+  },
   {
     title: 'Cashwavy',
     category: 'Web3',

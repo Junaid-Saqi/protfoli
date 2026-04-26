@@ -1,35 +1,63 @@
 import { motion } from 'framer-motion';
 
+// Import certificates
+import cybersecFoundations from '../assets/certificates/Foundations of Cybersecurity.pdf';
+import htmlCssDepth from '../assets/certificates/HTML CSS in depth.pdf';
+import versionControl from '../assets/certificates/Version Control.pdf';
+import googleCybersec from '../assets/certificates/google cybersecutrty.pdf';
+import ibmNetworking from '../assets/certificates/ibm networking.pdf';
+import introFrontend from '../assets/certificates/intro to frontend  development.pdf';
+import metaVersionControl from '../assets/certificates/meta version control.pdf';
+import programmingJS from '../assets/certificates/programing with js.pdf';
+
 const certificates = [
   { 
-    name: 'Meta Front-End Developer', 
-    issuer: 'Coursera / Meta',
+    name: 'Foundations of Cybersecurity', 
+    issuer: 'Google',
     date: '2023',
-    link: '#'
+    link: cybersecFoundations
   },
   { 
-    name: 'Google UX Design Professional', 
-    issuer: 'Coursera / Google',
+    name: 'HTML & CSS in Depth', 
+    issuer: 'Meta',
     date: '2023',
-    link: '#'
+    link: htmlCssDepth
   },
   { 
-    name: 'React Advanced Patterns', 
-    issuer: 'Frontend Masters',
-    date: '2024',
-    link: '#'
-  },
-  { 
-    name: 'Visual Design Masterclass', 
-    issuer: 'Interaction Design Foundation',
+    name: 'Version Control', 
+    issuer: 'Meta',
     date: '2023',
-    link: '#'
+    link: versionControl
   },
   { 
-    name: 'Javascript Algorithms & Data Structures', 
-    issuer: 'FreeCodeCamp',
-    date: '2022',
-    link: '#'
+    name: 'Google Cybersecurity Professional', 
+    issuer: 'Google',
+    date: '2023',
+    link: googleCybersec
+  },
+  { 
+    name: 'IBM Networking Essentials', 
+    issuer: 'IBM',
+    date: '2023',
+    link: ibmNetworking
+  },
+  { 
+    name: 'Introduction to Front-End Development', 
+    issuer: 'Meta',
+    date: '2023',
+    link: introFrontend
+  },
+  { 
+    name: 'Meta Version Control', 
+    issuer: 'Meta',
+    date: '2023',
+    link: metaVersionControl
+  },
+  { 
+    name: 'Programming with JavaScript', 
+    issuer: 'Meta',
+    date: '2023',
+    link: programmingJS
   },
 ];
 
@@ -106,8 +134,8 @@ export default function Certificates() {
                   rel="noopener noreferrer"
                   className="w-10 h-10 border border-border flex items-center justify-center rounded-full group-hover:border-accent group-hover:bg-accent group-hover:text-white transition-all duration-300"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
                   </svg>
                 </a>
               </div>

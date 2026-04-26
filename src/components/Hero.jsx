@@ -128,22 +128,27 @@ export default function Hero() {
           <div className="group relative flex items-center gap-1.5 cursor-default px-2 py-2">
             <span>Junaid Mirza</span>
             <svg 
-              className="w-3 h-3 md:w-3.5 md:h-3.5 text-[#1D9BF0] drop-shadow-[0_0_8px_rgba(29,155,240,0.5)]" 
+              className="w-3 h-3 md:w-3.5 md:h-3.5 text-[#1D9BF0] drop-shadow-[0_0_5px_rgba(29,155,240,0.3)] ml-0.5" 
               viewBox="0 0 24 24" 
-              fill="currentColor"
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="4" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
             >
-              <path d="M22.5 12.5c0-1.58-.88-2.95-2.18-3.66.54-1.27.43-2.71-.34-3.88-1.07-1.62-2.92-2.31-4.75-1.74-.66-1.32-1.92-2.22-3.39-2.39-1.93-.22-3.71 1.06-4.22 2.87-1.42-.3-2.93.1-3.92 1.09-1.46 1.46-1.59 3.73-.3 5.34-.37.7-.58 1.5-.58 2.37 0 1.58.88 2.95 2.18 3.66-.54 1.27-.43 2.71.34 3.88 1.07 1.62 2.92 2.31 4.75 1.74.66 1.32 1.92 2.22 3.39 2.39 1.93.22 3.71-1.06 4.22-2.87 1.42.3 2.93-.1 3.92-1.09 1.46-1.46 1.59-3.73.3-5.34.37-.7.58-1.5.58-2.37zm-11.5 4.5l-4.5-4.5 1.41-1.41 3.09 3.09 7.09-7.09 1.41 1.41-8.5 8.5z"/>
+              <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
             
             {/* Tooltip */}
-            <div className="absolute left-0 top-full mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
-              <div className="bg-white text-black text-[8px] tracking-[0.1em] px-2 py-1 rounded-sm font-bold uppercase shadow-xl">
+            <div className="absolute left-1/2 -translate-x-1/2 top-full mt-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap scale-95 group-hover:scale-100">
+              <div className="bg-white text-black text-[7px] tracking-[0.15em] px-2.5 py-1.5 rounded-[2px] font-bold uppercase shadow-2xl border border-white/20">
                 i want this lable on every my socialmedia
               </div>
-              <div className="w-2 h-2 bg-white rotate-45 absolute -top-1 left-4" />
+              <div className="w-2 h-2 bg-white rotate-45 absolute -top-1 left-1/2 -translate-x-1/2" />
             </div>
           </div>
           <a href="#work" className="hidden md:inline-block opacity-70 hover:opacity-100 transition-opacity px-2 py-2">Projects</a>
+          <a href="https://www.upwork.com/freelancers/~01a4412bb455767646" target="_blank" rel="noopener noreferrer" className="hidden md:inline-block opacity-70 hover:opacity-100 transition-opacity px-2 py-2 text-green-500">Upwork</a>
           <a href={resumeFile} target="_blank" rel="noopener noreferrer" className="hidden md:inline-block opacity-70 hover:opacity-100 transition-opacity px-2 py-2">Resume</a>
           <a href="#contact" className="hidden md:inline-block opacity-70 hover:opacity-100 transition-opacity px-2 py-2">Contact</a>
         </div>
