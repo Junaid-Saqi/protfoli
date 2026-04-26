@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 const socialLinks = [
   { name: 'Twitter', url: 'https://x.com/Junaid_Aly_', icon: '𝕏' },
   { name: 'GitHub', url: 'https://github.com/Junaid-Saqi', icon: '⌂' },
+  { name: 'Upwork', url: 'https://www.upwork.com/freelancers/~01a4412bb455767646', icon: '↗' },
   { name: 'WhatsApp', url: 'https://wa.me/03555622899', icon: '◈' },
   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/junaid-bro/', icon: 'in' },
 ];
@@ -38,9 +39,9 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-4">
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white/30">Connect</span>
+            <a href="https://www.upwork.com/freelancers/~01a4412bb455767646" target="_blank" rel="noopener noreferrer" className="text-sm hover:opacity-100 transition-opacity px-2 py-2 -mx-2">Upwork</a>
             <a href="https://x.com/Junaid_Aly_" target="_blank" rel="noopener noreferrer" className="text-sm hover:opacity-100 transition-opacity px-2 py-2 -mx-2">Twitter</a>
             <a href="https://github.com/Junaid-Saqi" target="_blank" rel="noopener noreferrer" className="text-sm hover:opacity-100 transition-opacity px-2 py-2 -mx-2">GitHub</a>
-            <a href="https://www.upwork.com/freelancers/~01a4412bb455767646" target="_blank" rel="noopener noreferrer" className="text-sm hover:opacity-100 transition-opacity px-2 py-2 -mx-2">Upwork</a>
             <a href="https://wa.me/03555622899" target="_blank" rel="noopener noreferrer" className="text-sm hover:opacity-100 transition-opacity px-2 py-2 -mx-2">WhatsApp</a>
           </div>
         </div>

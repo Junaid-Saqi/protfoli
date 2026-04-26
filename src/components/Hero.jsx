@@ -148,11 +148,13 @@ export default function Hero() {
             </div>
           </div>
           <a href="#work" className="hidden md:inline-block opacity-70 hover:opacity-100 transition-opacity px-2 py-2">Projects</a>
+          <a href="#certificates" className="hidden md:inline-block opacity-70 hover:opacity-100 transition-opacity px-2 py-2">Certificates</a>
           <a href="https://www.upwork.com/freelancers/~01a4412bb455767646" target="_blank" rel="noopener noreferrer" className="hidden md:inline-block opacity-70 hover:opacity-100 transition-opacity px-2 py-2 text-green-500">Upwork</a>
           <a href={resumeFile} target="_blank" rel="noopener noreferrer" className="hidden md:inline-block opacity-70 hover:opacity-100 transition-opacity px-2 py-2">Resume</a>
           <a href="#contact" className="hidden md:inline-block opacity-70 hover:opacity-100 transition-opacity px-2 py-2">Contact</a>
         </div>
         <div className="flex gap-4 md:gap-8">
+          <a href="https://www.upwork.com/freelancers/~01a4412bb455767646" target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity px-2 py-2">Upwork</a>
           <a href="https://www.linkedin.com/in/junaid-bro/" target="_blank" rel="noopener noreferrer" className="opacity-70 hover:opacity-100 transition-opacity px-2 py-2">LinkedIn</a>
         </div>
       </nav>
