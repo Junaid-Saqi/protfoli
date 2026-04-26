@@ -1,13 +1,13 @@
-import { motion } from 'framer-motion';
-import { useState } from 'react';
-import emailjs from 'emailjs-com';
+import { motion } from "framer-motion";
+import { useState } from "react";
+import emailjs from "emailjs-com";
 
-const SERVICE_ID = 'service_zz5l0eo';
-const TEMPLATE_ID = 'template_ki5caqw';
-const PUBLIC_KEY = 'yus7xgIE2q8EMen15';
+const SERVICE_ID = "service_zz5l0eo";
+const TEMPLATE_ID = "template_ki5caqw";
+const PUBLIC_KEY = "yus7xgIE2q8EMen15";
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -25,15 +25,16 @@ export default function Contact() {
       message: form.message,
     };
 
-    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+    emailjs
+      .send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
       .then(() => {
         setSubmitted(true);
         setLoading(false);
-        setForm({ name: '', email: '', message: '' });
+        setForm({ name: "", email: "", message: "" });
         setTimeout(() => setSubmitted(false), 3000);
       })
       .catch((error) => {
-        console.error('Email send failed:', error);
+        console.error("Email send failed:", error);
         setLoading(false);
       });
   };
@@ -62,93 +63,147 @@ export default function Contact() {
         </motion.h2>
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-start">
-           <div className="md:col-span-4 italic text-text-secondary text-sm leading-relaxed border-l border-border pl-6">
-             Available for freelance projects, collaborations, and creative partnerships.
-             <div className="mt-12">
-            <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/30 mb-4">Direct Email</p>
-            <a
-              href="mailto:maskedwolf211@gmail.com"
-              className="text-lg md:text-xl font-normal tracking-tight hover:opacity-50 transition-opacity underline underline-offset-8 decoration-white/10"
-            >
-              maskedwolf211@gmail.com
-            </a>
+          <div className="md:col-span-4 italic text-text-secondary text-sm leading-relaxed border-l border-border pl-6">
+            Available for freelance projects, collaborations, and creative
+            partnerships.
+            <div className="mt-12">
+              <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/30 mb-4">
+                Direct Email
+              </p>
+              <a
+                href="mailto:maskedwolf211@gmail.com"
+                className="text-lg md:text-xl font-normal tracking-tight hover:opacity-50 transition-opacity underline underline-offset-8 decoration-white/10"
+              >
+                maskedwolf211@gmail.com
+              </a>
+            </div>
+            <div className="mt-8 flex flex-col gap-4 non-italic font-bold tracking-[0.1em] uppercase text-[10px]">
+              <a
+                href="https://www.upwork.com/freelancers/~01a4412bb455767646_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent hover:text-green-500 transition-colors underline underline-offset-4 decoration-border px-2 py-2 -mx-2"
+              >
+                upwork
+              </a>
+              <a
+                href="https://x.com/Junaid_Aly_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors underline underline-offset-4 decoration-border px-2 py-2 -mx-2"
+              >
+                Twitter
+              </a>
+              <a
+                href="https://github.com/Junaid-Saqi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors underline underline-offset-4 decoration-border px-2 py-2 -mx-2"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://wa.me/03555622899"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors underline underline-offset-4 decoration-border px-2 py-2 -mx-2"
+              >
+                WhatsApp
+              </a>
+              <a
+                href="https://www.linkedin.com/in/junaid-bro/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors underline underline-offset-4 decoration-border px-2 py-2 -mx-2"
+              >
+                LinkedIn
+              </a>
+            </div>
           </div>
-              <div className="mt-8 flex flex-col gap-4 non-italic font-bold tracking-[0.1em] uppercase text-[10px]">
-                <a href="https://x.com/Junaid_Aly_" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors underline underline-offset-4 decoration-border px-2 py-2 -mx-2">Twitter</a>
-                <a href="https://github.com/Junaid-Saqi" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors underline underline-offset-4 decoration-border px-2 py-2 -mx-2">GitHub</a>
-                <a href="https://wa.me/03555622899" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors underline underline-offset-4 decoration-border px-2 py-2 -mx-2">WhatsApp</a>
-                <a href="https://www.linkedin.com/in/junaid-bro/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors underline underline-offset-4 decoration-border px-2 py-2 -mx-2">LinkedIn</a>
-              </div>
-           </div>
 
-           <motion.form
-             onSubmit={handleSubmit}
-             initial={{ opacity: 0, y: 30 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true }}
-             transition={{ delay: 0.3, duration: 0.7 }}
-             className="md:col-span-8 space-y-10"
-           >
-             <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-               <div className="group">
-                 <label htmlFor="name" className="block text-[10px] font-bold tracking-[0.2em] uppercase text-text-secondary mb-3 group-focus-within:text-accent transition-colors">
-                   Name
-                 </label>
-                 <input
-                   type="text"
-                   id="name"
-                   name="name"
-                   value={form.name}
-                   onChange={handleChange}
-                   required
-                   className="w-full bg-transparent border-b border-border py-2 text-sm focus:outline-none focus:border-accent transition-all duration-300"
-                   placeholder="Enter your name"
-                 />
-               </div>
-               <div className="group">
-                 <label htmlFor="email" className="block text-[10px] font-bold tracking-[0.2em] uppercase text-text-secondary mb-3 group-focus-within:text-accent transition-colors">
-                   Email
-                 </label>
-                 <input
-                   type="email"
-                   id="email"
-                   name="email"
-                   value={form.email}
-                   onChange={handleChange}
-                   required
-                   className="w-full bg-transparent border-b border-border py-2 text-sm focus:outline-none focus:border-accent transition-all duration-300"
-                   placeholder="your@email.com"
-                 />
-               </div>
-             </div>
-
-             <div className="group">
-               <label htmlFor="message" className="block text-[10px] font-bold tracking-[0.2em] uppercase text-text-secondary mb-3 group-focus-within:text-accent transition-colors">
-                 Message
-               </label>
-               <textarea
-                 id="message"
-                 name="message"
-                 value={form.message}
-                 onChange={handleChange}
-                 required
-                 rows={4}
-                 className="w-full bg-transparent border-b border-border py-2 text-sm resize-none focus:outline-none focus:border-accent transition-all duration-300"
-                 placeholder="How can I help you?"
-               />
-             </div>
-
-             <div className="pt-4">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="group flex items-center gap-4 text-[10px] font-bold tracking-[0.3em] uppercase disabled:opacity-50"
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.7 }}
+            className="md:col-span-8 space-y-10"
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+              <div className="group">
+                <label
+                  htmlFor="name"
+                  className="block text-[10px] font-bold tracking-[0.2em] uppercase text-text-secondary mb-3 group-focus-within:text-accent transition-colors"
                 >
-                  <span>{submitted ? '✓ Sent' : loading ? 'Sending...' : 'Send Inquiry'}</span>
-                  <div className="w-12 h-[1px] bg-accent group-hover:w-24 transition-all duration-500" />
-                </button>
-             </div>
-           </motion.form>
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-transparent border-b border-border py-2 text-sm focus:outline-none focus:border-accent transition-all duration-300"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div className="group">
+                <label
+                  htmlFor="email"
+                  className="block text-[10px] font-bold tracking-[0.2em] uppercase text-text-secondary mb-3 group-focus-within:text-accent transition-colors"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-transparent border-b border-border py-2 text-sm focus:outline-none focus:border-accent transition-all duration-300"
+                  placeholder="your@email.com"
+                />
+              </div>
+            </div>
+
+            <div className="group">
+              <label
+                htmlFor="message"
+                className="block text-[10px] font-bold tracking-[0.2em] uppercase text-text-secondary mb-3 group-focus-within:text-accent transition-colors"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                required
+                rows={4}
+                className="w-full bg-transparent border-b border-border py-2 text-sm resize-none focus:outline-none focus:border-accent transition-all duration-300"
+                placeholder="How can I help you?"
+              />
+            </div>
+
+            <div className="pt-4">
+              <button
+                type="submit"
+                disabled={loading}
+                className="group flex items-center gap-4 text-[10px] font-bold tracking-[0.3em] uppercase disabled:opacity-50"
+              >
+                <span>
+                  {submitted
+                    ? "✓ Sent"
+                    : loading
+                      ? "Sending..."
+                      : "Send Inquiry"}
+                </span>
+                <div className="w-12 h-[1px] bg-accent group-hover:w-24 transition-all duration-500" />
+              </button>
+            </div>
+          </motion.form>
         </div>
       </div>
     </section>
