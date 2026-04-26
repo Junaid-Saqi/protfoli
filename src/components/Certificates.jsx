@@ -106,8 +106,8 @@ export default function Certificates() {
                   rel="noopener noreferrer"
                   className="w-10 h-10 border border-border flex items-center justify-center rounded-full group-hover:border-accent group-hover:bg-accent group-hover:text-white transition-all duration-300"
                 >
-                  <svg className="w-4 h-4 rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
                   </svg>
                 </a>
               </div>
