@@ -79,7 +79,7 @@ export default function Contact() {
             </div>
             <div className="mt-8 flex flex-col gap-4 non-italic font-bold tracking-[0.1em] uppercase text-[10px]">
               <a
-                href="https://www.upwork.com/freelancers/~01a4412bb455767646_"
+                href="https://www.upwork.com/freelancers/~01a4412bb455767646"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-accent hover:text-green-500 transition-colors underline underline-offset-4 decoration-border px-2 py-2 -mx-2"
