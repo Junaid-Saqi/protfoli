@@ -7,6 +7,7 @@ import Skills from './components/Skills';
 import Services from './components/Services';
 import SelectedWork from './components/SelectedWork';
 import Experience from './components/Experience';
+import Certificates from './components/Certificates';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -61,6 +62,7 @@ export default function App() {
               <Services />
               <SelectedWork />
               <Experience />
+              <Certificates />
               <Testimonials />
               <Contact />
             </main>
