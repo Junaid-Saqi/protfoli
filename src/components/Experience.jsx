@@ -7,23 +7,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 const experiences = [
   {
-    role: 'Visual Designer',
-    company: 'LQ Agency',
+    role: 'Front End Developer',
+    company: 'Triangle Software Technologies',
     duration: '2023 — Present',
-    description: 'Worked on branding systems, campaign visuals, and digital product interfaces.',
+    description: 'Developing and maintaining responsive web applications and front-end architecture.',
   },
   {
-    role: 'UI/UX Designer',
-    company: 'IT Park Group',
-    duration: '2022 — 2023',
-    description: 'Designed user-centered interfaces and improved product usability.',
-  },
-  {
-    role: 'UI/UX Designer',
-    company: 'Google Studio',
-    duration: '2021 — 2022',
-    description: 'Contributed to interface systems, prototypes, and digital experiences.',
-  },
+    role: 'UI Developer',
+    company: 'Triangle Software Technologies',
+    duration: '2021 — 2023',
+    description: 'Designed and implemented user-centered interfaces, improving product usability and visual appeal.',
+  }
 ];
 
 export default function Experience() {
